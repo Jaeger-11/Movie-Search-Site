@@ -1,0 +1,60 @@
+
+.search-movies{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+.movie-box{
+    width: 250px;
+    height: max-content;
+    position: relative;
+}
+.search-article{
+    display: none;
+    position: absolute;
+    bottom: 0;
+    background-color: white;
+    width: 100%;
+}
+.fave{
+    position: absolute;
+    top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    background-color: var(--blueish);
+    color: white;
+}
+.poster{
+    width: 100%;
+    height: 300px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    opacity: 1;
+}
+.poster:hover{
+    opacity: 0.7;
+}
+.poster-link:hover + .search-article{
+    display: block;
+}
+.search-article:hover{
+    display: block;
+}
+.search-pagination{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+.search-page{
+    padding: 0.5rem;
+    background: blue;
+    color: white;
+}
+.search-info{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem;
+}

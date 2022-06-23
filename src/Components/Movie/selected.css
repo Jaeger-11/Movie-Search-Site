@@ -1,0 +1,45 @@
+
+.movie-container{
+
+}
+.movie-poster{
+    width: 100%;
+    margin:1rem 0;
+    display: flex;
+    justify-content: center;
+}
+.movie-poster img{
+    width: 80%;
+}
+.movie-sub{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.movie-info{
+    padding: 1rem;
+}
+
+@media screen and (min-width:500px){
+    .movie-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        /* grid-template-columns: 1fr 1fr; */
+    }
+    .movie-info{
+        max-width: 500px;
+        min-width: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .movie-poster{
+        max-width: 500px;
+        padding: 0;
+    }
+    .movie-poster img{
+        width: 400px;
+        height: 500px;
+    }
+}
