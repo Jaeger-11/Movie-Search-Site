@@ -13,7 +13,9 @@ const Navbar = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        searching(e.target.value)
+        if (e.target.value.length > 0){
+            searching(e.target.value)
+        }
     }
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -9,7 +9,6 @@ import {IoMdShareAlt} from 'react-icons/io';
 
 const SearchResult = () => {
     const { searchResponse, pages, changePage, currentPage, url, showMovies, movieInfo } = useGlobalContext();
-    console.log(searchResponse, pages)
     const {Search, Response, Error, totalResults} = searchResponse
 
     const defaultRows = [1,2,3,4,5]
@@ -34,25 +33,29 @@ const SearchResult = () => {
         } else changePage(x)
     }
 
+    const runSearch = () => {
+        console.log(url.length)
+        if (url.length > 47){
+            axios.get(url).then((response) => showMovies(response.data))
+        }
+    }
+
     useEffect(() => {
-        axios.get(url).then((response) => showMovies(response.data))
+        runSearch()
     }, [url])
 
 
     if (searchResponse){
         return (
             <div className="search-container">
-                { Response === 'True' && <div className="search-result">
-                    <p> <span>{totalResults}</span> Total Results</p>
-                    <p> Page <span>{currentPage}</span></p>
-                </div>}
-                <section className="search-movies">
-                    {Response === 'False' ? 
-                        <div>
-                            <p>Oops error occured</p>
-                            <p>{Error}</p>
-                        </div>  : 
-                        Search.map((movie) => {
+                { Response === 'True' && 
+                <div>
+                    <div className="search-result">
+                        <p> <span>{totalResults}</span> Total Results</p>
+                        <p> Page <span>{currentPage}</span></p>
+                    </div>
+                    <section className="search-movies">
+                        {Search.map((movie) => {
                             const {Title,  Year, Poster, imdbID} = movie;
                             return (
                                 <section className="movie-box" key={imdbID}>
@@ -70,9 +73,11 @@ const SearchResult = () => {
                                     {/* <p className="fave" onClick={() => movieInfo(imdbID)} > <IoMdShareAlt style={{fontSize:'1.2rem', padding:'5px'}} /> </p> */}
                                 </section>
                             )
-                        })
-                    }
-                </section>
+                        })}
+                    </section>
+                </div>
+                }
+                
                 {Response === 'True' && 
                 <section className="search-pagination">
                     <p className='search-page' onClick={previousPage} ><FaArrowLeft/></p>
@@ -91,10 +96,17 @@ const SearchResult = () => {
                     <p className='search-page' onClick={nextPage}><FaArrowRight/></p>
                 </section>
                 }
+
+                {Response === 'False' && <div>
+                    <p>Oops error occured</p>
+                    <p>{Error}</p>
+                </div>}
                 
             </div>
         )
     }
+
+     
     
     return (
         <p>Error Occured</p>
