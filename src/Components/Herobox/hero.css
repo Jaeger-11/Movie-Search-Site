@@ -19,6 +19,13 @@
 }
 .header h1{
     color: var(--secondary);
+    font-size: 2rem;
+}
+.header h2{
+    color: var(--winish);
+}
+.header p{
+    line-height: 24px;
 }
 .hero-logo{
     width: 70px;
@@ -26,18 +33,18 @@
 .hero-btn{
     width: 150px;
     height: 2.5rem;
-    background-color: var(--winish);
+    background-color: var(--blueish);
     border: none;
     box-shadow: rgba(0, 0, 0, 0.35) 2px 4px 10px;
     cursor: pointer;
-    color: white;
+    color: var(--winish);
     font-weight: 700;
     border-radius: 5px;
     font-size: 1rem;
 }
 .hero-btn:hover{
-    background-color: var(--blueish);
-    color: var(--winish);
+    background-color: var(--winish);
+    color: var(--blueish);
 }
 .hero-carousel{
     display: grid;
@@ -123,18 +130,4 @@
         width: 290;
         height: 390;
     }
-}
-
-/* STYLING OF THE USER MODAL */
-.user{
-    position: absolute;
-    right: 1rem;
-    top: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 3;
-    background-color: blue;
-    color: white;
-    width: max-content;
 }

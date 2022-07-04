@@ -1,8 +1,7 @@
-import {useEffect, useState} from 'react'
+import {useEffect} from 'react'
 import './hero.css';
 import axios from 'axios';
 import Heroslide from './Heroslide';
-import SignUp from '../Access/SignUp';
 import { useGlobalContext } from '../Context';
 import { Link } from 'react-router-dom';
 import netflix from '../../Images/netflix.png';
@@ -16,14 +15,16 @@ import {Autoplay, Navigation, Pagination, EffectCoverflow } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import LogIn from '../Access/Login';
-import User from './user';
+import HeroSwiper from './HeroSwiper';
+
 
 const Hero = () => {
     const {searchWord, showMovies, userIn} = useGlobalContext();
 
     const newMovies = ['tt5108870', 'tt11245972', 'tt4998632', 'tt12412888', 'tt11138512', 'tt1877830', 'tt2180339', 'tt2463208', 'tt15033192']
     const popular = ['tt8097030', 'tt13403046', 'tt6708668', 'tt13320622', 'tt1160419', 'tt9411972', 'tt14114802', 'tt6710474', 'tt8009428', 'tt1745960']
+    const series = ["tt1190634","tt4574334","tt1312171","tt2442560","tt7335184","tt7767422","tt2741602","tt5180504","tt6468322","tt10919420"]
+    const anime = ["tt0409591","tt2560140","tt9335498","tt0988824","tt0877057","tt3741634","tt0421357","tt0434665",]
 
     const url2 = `https://omdbapi.com/?s=${searchWord}&page=1&apikey=eb178fd2`;
     useEffect(() => {
@@ -38,6 +39,7 @@ const Hero = () => {
                     <section className='hero-text-section'>
                         <header className='header'>
                             <h1>Welcome To DMB</h1>
+                            <h2>A Destination for Movies</h2>
                             <p>
                             "Are you watching closely?",
                             You know what your problem is, it's that you haven't seen enough movies - all of life's riddles are answered in the movies.
@@ -63,51 +65,10 @@ const Hero = () => {
                     <img src={primevideo} alt="" className='hero-logo'/>
                 </div>
             </main>
-            <article>
-                <h2 id="topRated">Top Rated Movies 2022</h2>
-                <p></p>
-                <Swiper
-                breakpoints={{
-                    500:{
-                        width: 500,
-                        slidesPerView: 1.5,
-                    },
-                    768:{
-                        width: 768,
-                        slidesPerView: 2.5,
-                    },
-                    1000:{
-                        width: 1000,
-                        slidesPerView: 3,
-                    }
-                }}
-                modules={[Pagination, Navigation]}
-                slidesPerView='1.3'
-                style={{padding:'1rem'}}
-                pagination={{clickable: true}}
-                navigation= {true}
-                autoplay={{ delay:5000, disableOnInteraction: false }}
-                >
-                    {newMovies.map((item) => {
-                        return  <SwiperSlide style={{paddingBottom:'1rem'}} ><HeroSection movie={item}/></SwiperSlide>  
-                    })}
-                </Swiper>
-            </article>
-            <article>
-                <h2>Popular</h2>
-                <div className='hero-section'>
-                    {popular.map((item) => {
-                        return  <HeroSection movie={item} w={'200px'} h={'250px'}/>
-                    })}
-                </div>
-            </article>
-            {/* // <div>
-            //     <SignUp/>
-            // </div> */}
-            {/* <div>
-                <LogIn/>
-            </div>
-            {userIn && <User/> } */}
+            <HeroSwiper list={newMovies} title='Top Rated Movies 2022' />
+            <HeroSwiper list={popular} title='Popular Movies 2022' />
+            <HeroSwiper list={series} title='Series 2022' />
+            <HeroSwiper list={anime} title='Top Anime To Watch' />
             <footer>
 
             </footer>

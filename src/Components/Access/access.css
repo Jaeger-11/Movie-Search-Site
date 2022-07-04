@@ -1,0 +1,131 @@
+/* STYLING OF SIGN IN PAGE */
+.sign-container{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    background-color: white;
+}
+.sign header h2{
+    text-align: center;
+}
+.sign{
+    padding: 1rem;
+}
+.sign section p{
+    width: 90%;
+    margin: 1rem auto;
+}
+.sign label{
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+}
+.sign input{
+    border: 1px solid #DCDCDC;
+    border-radius: 4px;
+    width: 90%;
+    padding: 1rem;
+    margin-top: 0.5rem;
+}
+.sign select{
+    width: 100%;
+    padding: 1rem ;
+    border: 1px solid #DCDCDC;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+.forgot{
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    margin: 2rem 0;
+    color: var(--winish);
+}
+
+.google{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(216, 205, 224, 0.1);
+    border: 1px solid #D8CDE0;
+    border-radius: 4px;
+    gap: 1rem;
+    width: 90%;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+.or{
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.or span{
+    width: 40%;
+    height: 1px;
+    background-color: var(--blueish);
+}
+.sign header h5{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    margin: 1rem 0;
+}
+.sign header p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+}
+.sign header p span{
+    color: var(--secondary);
+}
+.sign button{
+    width: 90%;
+    margin: auto;
+    display: block;
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    background-color: var(--blueish);
+    color: var(--primary);
+}
+
+@media screen and (min-width: 600px) {
+    .sign-container{
+        padding: 3rem 0;
+        min-height: max-content;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .sign{
+        background: #FFFFFF;
+        border-radius: 4px;
+        width: 400px;
+        box-shadow: rgba(0, 0, 0, 0.35) 2px 4px 10px;
+    }
+    .sign input{
+        width: 93%;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .sign{
+        width: 547px;
+    }
+}
