@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const HeroSection = ({movie, w, h}) => {
     const { movieInfo } = useGlobalContext();
@@ -11,7 +11,7 @@ const HeroSection = ({movie, w, h}) => {
     useEffect(() => {
         axios.get(url)
         .then((response) => setInfo(response.data))
-    }, [])
+    }, [url])
 
     const {Title,  Year, Poster, imdbID} = info;
     return (

@@ -41,6 +41,7 @@
     font-weight: 700;
     border-radius: 5px;
     font-size: 1rem;
+    margin: auto;
 }
 .hero-btn:hover{
     background-color: var(--winish);
@@ -129,5 +130,8 @@
     .section-image{
         width: 290;
         height: 390;
+    }
+    .hero-btn{
+        margin: 0;
     }
 }

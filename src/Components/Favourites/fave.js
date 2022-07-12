@@ -16,7 +16,6 @@ const Fave  = ({item}) => {
         axios.get(url)
         .then((response) => setInfo(response.data))
     }, [])
-    console.log(info)
 
     const {Title,  Year, Poster, imdbID} = info;
     return (

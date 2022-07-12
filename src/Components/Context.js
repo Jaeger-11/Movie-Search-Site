@@ -2,10 +2,11 @@ import React, { useContext, useReducer, useState, useEffect } from "react";
 import Reducer from "./Reducer";
 import {onAuthStateChanged, signOut} from 'firebase/auth';
 import { auth } from '../Firebase/Config';
-import { collection, query, where, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, updateDoc, getDoc } from "firebase/firestore";
 import { projectFirestore } from "../Firebase/Config";
 
 const AppContext = React.createContext();
+
 const defaultState = { 
     isSearching: false,
     searchWord: '',
@@ -15,21 +16,18 @@ const defaultState = {
     url: '',
     id: '',
     favourites: [],
+    user: null,
 }
 
 const AppProvider = ({children}) => {
     const [state, dispatch] = useReducer(Reducer, defaultState);
     const [loggedUser, setLoggedUser] = useState('');
     const [loggedEmail, setLoggedEmail] = useState('');
-    const [displayUser, setDisplayUser] = useState(false)
-    // const faveRef = collection(projectFirestore, 'fave');
-    // const q = query(userRef, where("email", '==', loggedEmail))
+    const [uid, setUid] = useState('');
+    const [displayUser, setDisplayUser] = useState(false);
+    const [modal, setModal] = useState(false);
+    const [favModal, setFavModal] = useState(false); 
 
-    // useEffect(() => {
-    //     addDoc(doc(faveRef), {
-    //         fave: 'lll'
-    //     });
-    // }, [state.favourites])  
 
     const searching = (text) => {
         dispatch({type:'SEARCHING', payload: text})
@@ -52,16 +50,59 @@ const AppProvider = ({children}) => {
     const addToFavourites = (id) => {
         dispatch({type: 'ADD_TO_FAVOURITES', payload: id})
     } 
+    const addUid = (uid) => {
+        dispatch({type:'ADD_UID', payload: uid})
+    }
+    const getFavourites = (fave) => {
+        dispatch({type:'GET_FAVOURITES', payload: fave})
+    }
+    const addFaveToFirebase = (uid) => {
+        if (state.user){
+            const userRef = doc(projectFirestore, 'users', uid);
+            if (state.favourites.length > 0){
+                updateDoc(userRef,{
+                    favourites : state.favourites
+                })
+            }
+        }  
+    }
+    const handleFavModal = () => {
+        setFavModal(true)
+        setTimeout(() => {
+            setFavModal(false);
+        }, 3000)
+    }
 
+    
     onAuthStateChanged(auth, (user) => {
         if(user){
             setLoggedUser(user.displayName)
             setLoggedEmail(user.email)
+            setUid(user.uid)
+            if (state.user){
+                const docRef = doc(projectFirestore, "users", state.user );
+                getDoc(docRef)
+                    .then((doc) => {
+                        const data = doc.data()
+                        getFavourites(data.favourites)
+                    })
+            } else {
+            }
+            addFaveToFirebase(uid);
         } else {
             setLoggedEmail('');
-            setLoggedUser('');    
+            setLoggedUser(''); 
+            setUid('')   
         }
-    }) 
+    })
+
+    useEffect(() => {
+        addUid(uid)
+    }, [uid])
+
+    useEffect(() => {
+        addFaveToFirebase(uid)
+    }, [state.favourites])
 
     return(
         <AppContext.Provider
@@ -77,7 +118,12 @@ const AppProvider = ({children}) => {
                 loggedUser,
                 loggedEmail,
                 setDisplayUser,
-                displayUser
+                displayUser,
+                modal,
+                setModal,
+                favModal,
+                handleFavModal,
+                addUid,
             }}
         >
             {children}

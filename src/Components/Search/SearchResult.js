@@ -62,7 +62,6 @@ const SearchResult = () => {
                                     <p className="poster-link"><Link to="/selected" >
                                         <img src={Poster === 'N/A' ? imageNA : Poster } 
                                         className='poster' alt={Title} onClick={() => movieInfo(imdbID)}/>
-                                    
                                     </Link></p> 
                                     <article className='search-article'>
                                         <div className='search-info'>

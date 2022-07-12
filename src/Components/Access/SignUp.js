@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, updateProfile, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import {useState} from 'react';
-import { addDoc, collection } from "firebase/firestore";
+import { setDoc, collection, doc } from "firebase/firestore";
 import { auth, projectFirestore } from "../../Firebase/Config";
 import google from '../../Images/google.png'
 import { Link, useNavigate } from "react-router-dom";
@@ -23,10 +23,10 @@ const SignUp = () => {
         createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
         .then((userCredential) => {
             const User = userCredential.user;
-            addDoc(userRef, {
+            setDoc(doc(projectFirestore, "users", User.uid), {
                 username : newUser.name,
                 email: newUser.email,
-                userID : User.uid
+                favourites: []
             })
             updateProfile(auth.currentUser, {
                 displayName: newUser.name
@@ -52,6 +52,12 @@ const SignUp = () => {
         e.preventDefault();
         signInWithPopup(auth, gprovider)
         .then((userCredential) => {
+            const User = userCredential.user;
+            setDoc(doc(projectFirestore, "users", User.uid), {
+                username : User.displayName,
+                email: User.email,
+                favourites: []
+            })
             navigate('/')
         })
         .catch((error) => {

@@ -3,23 +3,18 @@ import './hero.css';
 import axios from 'axios';
 import Heroslide from './Heroslide';
 import { useGlobalContext } from '../Context';
-import { Link } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import netflix from '../../Images/netflix.png';
 import hbo from '../../Images/hbo.png';
 import primevideo from '../../Images/primevideo.png';
 import hulu from '../../Images/Hulu.png';
 import disney from '../../Images/disney.png';
-import HeroSection from './heroSection';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import {Autoplay, Navigation, Pagination, EffectCoverflow } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import HeroSwiper from './HeroSwiper';
 
 
 const Hero = () => {
-    const {searchWord, showMovies, userIn} = useGlobalContext();
+    let navigate = useNavigate();
+    const {searchWord, showMovies} = useGlobalContext();
 
     const newMovies = ['tt5108870', 'tt11245972', 'tt4998632', 'tt12412888', 'tt11138512', 'tt1877830', 'tt2180339', 'tt2463208', 'tt15033192']
     const popular = ['tt8097030', 'tt13403046', 'tt6708668', 'tt13320622', 'tt1160419', 'tt9411972', 'tt14114802', 'tt6710474', 'tt8009428', 'tt1745960']
@@ -45,11 +40,12 @@ const Hero = () => {
                             You know what your problem is, it's that you haven't seen enough movies - all of life's riddles are answered in the movies.
                             <br /> Search for amazing movies to chill with!, Go see it and see for yourself why you should have watched it. 
                             </p>
-                            <Link to='/search' className='hero-search'><button className='hero-btn'> Search</button></Link>
+                            <button className='hero-btn' onClick={() => navigate('/search')}> Search </button>
                             <p className='hero-links'>
                                 <a href="#topRated" className='link'>Top Rated</a> 
-                                <a href="http://" target="_blank" rel="noopener noreferrer" className='link'>New</a>   
-                                <a href="http://" target="_blank" rel="noopener noreferrer" className='link'>Popular</a>
+                                <a href="#popular" className='link'>Popular</a>
+                                <a href="#topSeries"  className='link'>Top Series</a> 
+                                {/* <a href="#anime" className='link'>Anime</a> */}
                             </p>
                         </header>
                     </section>
@@ -65,10 +61,10 @@ const Hero = () => {
                     <img src={primevideo} alt="" className='hero-logo'/>
                 </div>
             </main>
-            <HeroSwiper list={newMovies} title='Top Rated Movies 2022' />
-            <HeroSwiper list={popular} title='Popular Movies 2022' />
-            <HeroSwiper list={series} title='Series 2022' />
-            <HeroSwiper list={anime} title='Top Anime To Watch' />
+            <span id='topRated'><HeroSwiper list={newMovies} title='Top Rated Movies 2022'  /></span>
+            <span id='popular'><HeroSwiper list={popular} title='Popular Movies 2022' /></span>
+            <span id='topSeries'><HeroSwiper list={series} title='Top Series 2022' /></span>
+            <span><HeroSwiper list={anime} title='Top Anime To Watch' id='anime'/></span>
             <footer>
 
             </footer>

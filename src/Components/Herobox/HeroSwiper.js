@@ -36,7 +36,7 @@ const HeroSwiper = ({list, title}) => {
             autoplay={{ delay:5000, disableOnInteraction: false }}
             >
                 {list.map((item) => {
-                    return  <SwiperSlide style={{paddingBottom:'1rem'}} ><HeroSection movie={item}/></SwiperSlide>  
+                    return  <SwiperSlide style={{paddingBottom:'1rem'}} key={item} ><HeroSection movie={item}/></SwiperSlide>  
                 })}
             </Swiper>
         </article>

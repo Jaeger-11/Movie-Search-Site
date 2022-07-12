@@ -50,7 +50,7 @@ const Navbar = () => {
                 </div>
             }
 
-            <div className='nav-bars' onClick={() => setIsMenuOpen(!isMenuOpen)} > { isMenuOpen ? <FaTimes/> : <FaBars/> } </div>
+            <div className='nav-bars' onClick={() => setIsMenuOpen(true)} > <FaBars/></div>
             { isMenuOpen && <Menu setIsMenuOpen={setIsMenuOpen} /> }
             { displayUser && <User/> }
         </nav>

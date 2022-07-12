@@ -69,19 +69,32 @@
 
 .menu-container{
     position: fixed;
-    top: 2.3rem;
-    right: 0;
+    top: 0;
+    background-color: rgba(155, 148, 148, 0.6);
+    z-index: 5;
+    height: 100%;
+    width: 100%;
 }
 .menu{
     list-style: none;
     background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-bottom: 2rem;
 }
 .menu li{
     padding: 1rem;
+    width: 50vw;
+    min-width: 200px;
 }
 .menu-link{
     color: var(--blueish);
     text-decoration: none;
+}
+.menu-times{
+    display:  flex;
+    justify-content: flex-end;
 }
 
 

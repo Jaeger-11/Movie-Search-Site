@@ -3,9 +3,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import './selected.css';
 import { Link } from "react-router-dom";
+import FavModal from "../Modal/FavModal";
+import Modal from "../Modal/Modal";
+import { MdError } from "react-icons/md";
 
 const SelectedMovie = () => {
-    const {id, favourites,addToFavourites } = useGlobalContext();
+    const {id, addToFavourites, favModal, handleFavModal, user, setModal, modal} = useGlobalContext();
     const [data, setData] = useState('');
     const [err, setErr] = useState('');
     const url = `https://omdbapi.com/?i=${id}&apikey=eb178fd2`
@@ -14,13 +17,21 @@ const SelectedMovie = () => {
         .then((response) => setData(response.data))
         .catch((error) => setErr(error.message))
     }, [url])
-    // console.log(data)
-    console.log(favourites)
 
     if(err){
         return (
             <p>{err}</p>
         )
+    }
+
+
+    const handleFavourite = (imdbID) => {
+        if (user){
+            addToFavourites(imdbID);
+            handleFavModal();
+        } else {
+            setModal(true)
+        }
     }
 
     if(data){
@@ -34,7 +45,7 @@ const SelectedMovie = () => {
                     </section>
                     <section className="movie-info" >
                         <div >
-                        <p onClick={() => addToFavourites(imdbID)} >Add to Favourites</p>
+                        <p onClick={() => handleFavourite(imdbID)} >Add to Favourites</p>
                             <article className="movie-sub">
                                 <h4>{Title}</h4>
                                 <p>imdbRating{imdbRating}</p>
@@ -53,6 +64,15 @@ const SelectedMovie = () => {
                         </div>
                     </section>
                 </div>
+                {modal && 
+                <Modal
+                title='Ooops'
+                text='Sign in to add favourites'
+                to='/login'
+                button='Sign In'
+                icon={<MdError className="icon"/>}
+                />}
+                {favModal && <FavModal/>}
                 <p> <Link to='/' >Back Home</Link> </p>
             </div>
             
