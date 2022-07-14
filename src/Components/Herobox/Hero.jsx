@@ -9,6 +9,7 @@ import hbo from '../../Images/hbo.png';
 import primevideo from '../../Images/primevideo.png';
 import hulu from '../../Images/Hulu.png';
 import disney from '../../Images/disney.png';
+import people from '../../Images/couple.jpeg'
 import HeroSwiper from './HeroSwiper';
 
 
@@ -16,8 +17,8 @@ const Hero = () => {
     let navigate = useNavigate();
     const {searchWord, showMovies} = useGlobalContext();
 
-    const newMovies = ['tt5108870', 'tt11245972', 'tt4998632', 'tt12412888', 'tt11138512', 'tt1877830', 'tt2180339', 'tt2463208', 'tt15033192']
-    const popular = ['tt8097030', 'tt13403046', 'tt6708668', 'tt13320622', 'tt1160419', 'tt9411972', 'tt14114802', 'tt6710474', 'tt8009428', 'tt1745960']
+    const newMovies = ['tt5108870','tt11245972','tt4998632','tt12412888','tt11138512','tt1877830','tt2180339','tt2463208','tt15033192']
+    const popular = ['tt8097030','tt13403046','tt6708668','tt13320622','tt1160419','tt9411972','tt14114802','tt6710474','tt8009428','tt1745960']
     const series = ["tt1190634","tt4574334","tt1312171","tt2442560","tt7335184","tt7767422","tt2741602","tt5180504","tt6468322","tt10919420"]
     const anime = ["tt0409591","tt2560140","tt9335498","tt0988824","tt0877057","tt3741634","tt0421357","tt0434665",]
 
@@ -28,6 +29,7 @@ const Hero = () => {
 
 
     return(
+        <div>
         <div className='hero'>
             <main className="hero-main">
                 <div className="hero-grid">
@@ -63,10 +65,27 @@ const Hero = () => {
             </main>
             <span id='topRated'><HeroSwiper list={newMovies} title='Top Rated Movies 2022'  /></span>
             <span id='popular'><HeroSwiper list={popular} title='Popular Movies 2022' /></span>
-            <span id='topSeries'><HeroSwiper list={series} title='Top Series 2022' /></span>
-            <span><HeroSwiper list={anime} title='Top Anime To Watch' id='anime'/></span>
-            <footer>
 
+            <section className='hero-grid'>
+                <p className='img-cont'><img src={people} alt="people" /></p>
+                <article className='img-article'>
+                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim amet incidunt alias dolor provident quaerat accusamus nemo cum quis voluptate, hic fugiat unde, maiores voluptatem sunt aliquid! Blanditiis, culpa repudiandae!
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum, exercitationem excepturi quod praesentium eum aliquam. Ut quod quas, nesciunt nemo inventore consequuntur aut beatae quidem ex unde quis culpa delectus.
+                    </p>
+                    <p><button className='hero-btn'>Sign Up</button></p>
+                </article>
+            </section>
+
+            <span id='topSeries'><HeroSwiper list={series} title='Top Series 2022'/></span>
+            <span><HeroSwiper list={anime} title='Top Anime To Watch' id='anime'/></span>
+            
+        </div>
+        <footer className='hero-footer'>
+                <div>
+                    <p>Built with React.js, axios, omDB API and Firebase</p>
+                    <p> developed by <a href=""> Falodun Oluwadamilola Paul</a> </p>
+                </div>
             </footer>
         </div>
     )

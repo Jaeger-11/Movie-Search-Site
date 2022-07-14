@@ -19,6 +19,12 @@
 .movie-info{
     padding: 1rem;
 }
+.loading-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
 
 @media screen and (min-width:500px){
     .movie-container{

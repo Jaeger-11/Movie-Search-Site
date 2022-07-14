@@ -41,7 +41,7 @@ const SearchResult = () => {
     }
 
     useEffect(() => {
-        runSearch()
+        axios.get(url).then((response) => showMovies(response.data))
     }, [url])
 
 
@@ -103,6 +103,8 @@ const SearchResult = () => {
                 
             </div>
         )
+    } else {
+        return <p>Loading....</p>
     }
 
      

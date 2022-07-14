@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import FavModal from "../Modal/FavModal";
 import Modal from "../Modal/Modal";
 import { MdError } from "react-icons/md";
+import { ThreeDots } from 'react-loader-spinner'
 
 const SelectedMovie = () => {
     const {id, addToFavourites, favModal, handleFavModal, user, setModal, modal} = useGlobalContext();
@@ -80,7 +81,9 @@ const SelectedMovie = () => {
     }
 
     return(
-        <div>Loading...</div>
+        <div className="loading-container">
+            <ThreeDots color="#12cbaa" height={100} width={100} />
+        </div>
     )
     
 }

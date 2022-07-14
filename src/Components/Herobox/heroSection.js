@@ -2,6 +2,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context";
 import { useState, useEffect, useMemo } from "react";
+import { ThreeDots } from 'react-loader-spinner'
 
 const HeroSection = ({movie, w, h}) => {
     const { movieInfo } = useGlobalContext();
@@ -11,9 +12,11 @@ const HeroSection = ({movie, w, h}) => {
     useEffect(() => {
         axios.get(url)
         .then((response) => setInfo(response.data))
-    }, [url])
+    }, [])
 
-    const {Title,  Year, Poster, imdbID} = info;
+    
+    
+        const {Title,  Year, Poster, imdbID} = info;
     return (
         <section key={imdbID} className='section'>
             <p><Link to="/selected" >
@@ -24,7 +27,13 @@ const HeroSection = ({movie, w, h}) => {
                 <p>{Year}</p>
             </div>
         </section>
-    )
-}
+    )}
+
+    // return (
+    //     <div className="loading-container">
+    //         <ThreeDots width={100} height={100} />
+    //     </div>
+    // )
+
 
 export default HeroSection;

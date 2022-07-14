@@ -96,6 +96,24 @@
     width: 100%;
     height: 350px;
 }
+.img-cont{
+    position: relative;
+    padding: 0 1rem;
+}
+.img-cont img{
+    width: 100%;
+}
+.img-article{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+}
+.hero-footer{
+    background-color: var(--blueish);
+    color: white;text-align: center;
+    padding: 2rem 1rem;
+}
 
 
 @media screen and (min-width: 500px) {

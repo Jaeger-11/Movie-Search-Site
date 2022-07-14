@@ -16,6 +16,7 @@ const Reducer = (state, action) => {
             return{...state, favourites: action.payload}
         case 'ADD_TO_FAVOURITES':
             const exist = state.favourites.includes(action.payload)
+            console.log(state.favourites)
             if (exist){
                 return {...state}
             }else {

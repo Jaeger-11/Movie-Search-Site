@@ -88,7 +88,7 @@ const AppProvider = ({children}) => {
                     })
             } else {
             }
-            addFaveToFirebase(uid);
+            // addFaveToFirebase(uid);
         } else {
             setLoggedEmail('');
             setLoggedUser(''); 
@@ -100,9 +100,11 @@ const AppProvider = ({children}) => {
         addUid(uid)
     }, [uid])
 
-    useEffect(() => {
-        addFaveToFirebase(uid)
-    }, [state.favourites])
+    
+
+    // useEffect(() => {
+    //     addFaveToFirebase(uid)
+    // }, [state.favourites])
 
     return(
         <AppContext.Provider
