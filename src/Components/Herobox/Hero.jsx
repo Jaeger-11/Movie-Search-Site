@@ -63,28 +63,28 @@ const Hero = () => {
                     <img src={primevideo} alt="" className='hero-logo'/>
                 </div>
             </main>
-            <span id='topRated'><HeroSwiper list={newMovies} title='Top Rated Movies 2022'  /></span>
-            <span id='popular'><HeroSwiper list={popular} title='Popular Movies 2022' /></span>
+            <span id='topRated' className='span' ><HeroSwiper list={newMovies} title='Top Rated Movies 2022'  /></span>
+            <span id='popular' className='span'><HeroSwiper list={popular} title='Popular Movies 2022' /></span>
 
-            <section className='hero-grid'>
+            <section className='hero-grid img-section'>
                 <p className='img-cont'><img src={people} alt="people" /></p>
                 <article className='img-article'>
-                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+                    <h2>Create A Watchlist</h2>
                     <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim amet incidunt alias dolor provident quaerat accusamus nemo cum quis voluptate, hic fugiat unde, maiores voluptatem sunt aliquid! Blanditiis, culpa repudiandae!
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum, exercitationem excepturi quod praesentium eum aliquam. Ut quod quas, nesciunt nemo inventore consequuntur aut beatae quidem ex unde quis culpa delectus.
                     </p>
-                    <p><button className='hero-btn'>Sign Up</button></p>
+                    <p><button className='hero-btn' onClick={() => navigate('/create')} >Sign Up</button></p>
                 </article>
             </section>
 
-            <span id='topSeries'><HeroSwiper list={series} title='Top Series 2022'/></span>
-            <span><HeroSwiper list={anime} title='Top Anime To Watch' id='anime'/></span>
+            <span id='topSeries' className='span'><HeroSwiper list={series} title='Top Series 2022'/></span>
+            <span className='span'><HeroSwiper list={anime} title='Top Anime To Watch' id='anime'/></span>
             
         </div>
         <footer className='hero-footer'>
                 <div>
-                    <p>Built with React.js, axios, omDB API and Firebase</p>
-                    <p> developed by <a href=""> Falodun Oluwadamilola Paul</a> </p>
+                    <p>Built with React.js, Axios, omDB API and Firebase</p>
+                    <p> developed by <a href="https://github.com/jaeger-11"> Falodun Oluwadamilola Paul</a> </p>
                 </div>
             </footer>
         </div>

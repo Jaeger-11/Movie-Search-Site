@@ -15,10 +15,10 @@
 .header{
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 .header h1{
-    color: var(--secondary);
+    color: var(--blueish);
     font-size: 2rem;
 }
 .header h2{
@@ -42,6 +42,7 @@
     border-radius: 5px;
     font-size: 1rem;
     margin: auto;
+    font-family: inherit;
 }
 .hero-btn:hover{
     background-color: var(--winish);
@@ -53,6 +54,10 @@
 } 
 .hero-swiper{
     text-align: center;
+}
+.span{
+    margin: 1.5rem 0;
+    display: block;
 }
 .hero-image{
     width: 80%;
@@ -103,16 +108,27 @@
 .img-cont img{
     width: 100%;
 }
+.img-section{
+    margin: 1.5rem 0;
+}
 .img-article{
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     justify-content: center;
+    padding: 1.5rem;
+}
+.img-article button{
+    float: right;
 }
 .hero-footer{
     background-color: var(--blueish);
     color: white;text-align: center;
     padding: 2rem 1rem;
+}
+.hero-footer a{
+    color: var(--winish);
+    font-style: italic;
 }
 
 

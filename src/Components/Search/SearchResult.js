@@ -103,8 +103,6 @@ const SearchResult = () => {
                 
             </div>
         )
-    } else {
-        return <p>Loading....</p>
     }
 
      

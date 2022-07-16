@@ -11,7 +11,7 @@ const HeroSwiper = ({list, title}) => {
     
     return(
         <article>
-            <h2 id="topRated">{title}</h2>
+            <h2 id="topRated" style={{padding:'0 1rem '}}>{title}</h2>
             <p></p>
             <Swiper
             breakpoints={{

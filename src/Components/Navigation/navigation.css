@@ -3,7 +3,9 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0;
+    padding: 1rem 0;
+    background-color: var(--blueish);
+    color: var(--grayish);
 }
 .nav-logo{
     margin-left: 1rem;
@@ -22,10 +24,12 @@
 .navbtn1{
     background-color: var(--blueish);
     color: white;
+    border: none;
 }
 .navbtn2{
     background-color: var(--winish);
     color: var(--blueish);
+    border: none;
 }
 .nav-search{
     cursor: pointer;
@@ -62,6 +66,18 @@
         gap: 1rem;
         padding: 0 1rem;
         cursor: pointer;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .nav-sub{
+        gap: 2rem;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .nav-sub{
+        gap: 3rem;
     }
 }
 
