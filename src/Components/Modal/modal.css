@@ -26,7 +26,7 @@
     text-align: right !important;
 }
 .modal .title{
-    color: var(--winish);
+    color: var(--blueish);
     font-weight: 400;
     font-size: 40px;
     line-height: 48px;
@@ -40,7 +40,10 @@
 .modal button{
     width: 100%;
     padding: 1rem;
-    background-color: var(--secondary);
+    background-color: var(--blueish);
+    color: var(--winish);
+    cursor: pointer;
+    font-size: 1.2rem;
 }
 .favAdded{
     position: absolute;

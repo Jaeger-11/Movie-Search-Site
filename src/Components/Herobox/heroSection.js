@@ -2,7 +2,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context";
 import { useState, useEffect, useMemo } from "react";
-import { ThreeDots } from 'react-loader-spinner'
+import Tilt  from 'react-parallax-tilt'
 
 const HeroSection = ({movie, w, h}) => {
     const { movieInfo } = useGlobalContext();
@@ -20,7 +20,7 @@ const HeroSection = ({movie, w, h}) => {
     return (
         <section key={imdbID} className='section'>
             <p><Link to="/selected" >
-            <img src={Poster} className="section-image" width={w ? w : '250px'} height={h ? h : '350px'} alt={Title} onClick={() => movieInfo(imdbID)}/>
+            <Tilt> <img src={Poster} className="section-image" width={w ? w : '250px'} height={h ? h : '350px'} alt={Title} onClick={() => movieInfo(imdbID)}/> </Tilt>
             </Link></p> 
             <div >
                 <h3>{Title} </h3>

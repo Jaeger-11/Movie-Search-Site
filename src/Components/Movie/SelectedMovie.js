@@ -39,29 +39,29 @@ const SelectedMovie = () => {
         const {Actors, Director, Genre, Plot, Poster,  imdbID, imdbRating, Runtime, Title, Type,  Year } = data; 
 
         return (
-            <div>
+            <div className="movie">
                 <div className="movie-container">
                     <section className="movie-poster">
                         <img src={Poster} alt={Title}/>
                     </section>
                     <section className="movie-info" >
-                        <div >
+                        <div className="movie-div">
                         <p onClick={() => handleFavourite(imdbID)} >Add to Favourites</p>
-                            <article className="movie-sub">
-                                <h4>{Title}</h4>
-                                <p>imdbRating{imdbRating}</p>
-                            </article>
                             <article className="movie-info-sub">
+                                <article className="movie-sub">
+                                    <h4>{Title}</h4>
+                                    <p>imdbRating{imdbRating}</p>
+                                </article>
                                 <p>Genre: <b>{Genre}</b></p>
                                 <p>Director: {Director}</p>
-                                <p>Cast:{Actors} </p>
+                                <p>Cast: {Actors} </p>
                                 <p>{Plot}</p>
+                                <div className="movie-sub">
+                                    <p>{Year}</p>
+                                    <p>{Type}</p>
+                                    <p>{Runtime}</p>
+                                </div>
                             </article>
-                            <div className="movie-sub">
-                                <p>{Year}</p>
-                                <p>{Type}</p>
-                                <p>{Runtime}</p>
-                            </div>
                         </div>
                     </section>
                 </div>
