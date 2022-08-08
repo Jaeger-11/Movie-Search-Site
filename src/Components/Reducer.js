@@ -15,15 +15,13 @@ const Reducer = (state, action) => {
         case 'GET_FAVOURITES':
             return{...state, favourites: action.payload}
         case 'ADD_TO_FAVOURITES':
-            // const exist = state.favourites.includes(action.payload)
-            // if (exist){
-            //     return {...state}
-            // }else {
-                updateDoc(doc(projectFirestore, 'users', state.user), {
-                    favourites: arrayUnion(action.payload)
-                });
-                // return{...state, favourites: [...state.favourites, action.payload]}
-            // }
+            updateDoc(doc(projectFirestore, 'users', state.user), {
+                favourites: arrayUnion(action.payload)
+            });
+        case 'REMOVE_FROM_FAVOURITES':
+            updateDoc(doc(projectFirestore, 'users', state.user), {
+                favourites: arrayRemove(action.payload)
+            });
         case 'ADD_UID':
             return{...state, user: action.payload} 
         default: 

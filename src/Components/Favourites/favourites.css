@@ -2,13 +2,15 @@
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .fave-div{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50vh;
+    width: 100%;
+    /* height: 50vh; */
 }
 
 .fave-div section{

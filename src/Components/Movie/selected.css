@@ -37,6 +37,15 @@
     justify-content: center;
     height: 90vh;
 }
+.addToFave{
+    background-color: var(--winish);
+    color: var(--blueish);
+    width: max-content;
+    padding: 0.5rem 1rem;
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+}
 
 @media screen and (min-width:500px){
     .movie-container{

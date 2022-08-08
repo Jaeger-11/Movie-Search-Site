@@ -1,10 +1,10 @@
 import { FaHeart } from 'react-icons/fa';
 
-const FavModal = ()=> {
+const FavModal = ({text})=> {
 
     return(
         <div className="favAdded">
-           <FaHeart/>  Added To Favourites
+           <FaHeart/> {text}
         </div>
     )
 }

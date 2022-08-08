@@ -50,27 +50,21 @@ const AppProvider = ({children}) => {
     const addToFavourites = (id) => {
         dispatch({type: 'ADD_TO_FAVOURITES', payload: id})
     } 
+    const removeFromFavourites = (id) => {
+        dispatch({type: 'REMOVE_FROM_FAVOURITES', payload: id})
+    } 
     const addUid = (uid) => {
         dispatch({type:'ADD_UID', payload: uid})
     }
     const getFavourites = (fave) => {
         dispatch({type:'GET_FAVOURITES', payload: fave})
     }
-    const addFaveToFirebase = (uid) => {
-        if (state.user){
-            const userRef = doc(projectFirestore, 'users', uid);
-            if (state.favourites.length > 0){
-                updateDoc(userRef,{
-                    favourites : state.favourites
-                })
-            }
-        }  
-    }
+    
     const handleFavModal = () => {
         setFavModal(true)
         setTimeout(() => {
             setFavModal(false);
-        }, 3000)
+        }, 2000)
     }
 
     
@@ -86,9 +80,7 @@ const AppProvider = ({children}) => {
                         const data = doc.data()
                         getFavourites(data.favourites)
                     })
-            } else {
-            }
-            // addFaveToFirebase(uid);
+            } else {}
         } else {
             setLoggedEmail('');
             setLoggedUser(''); 
@@ -99,12 +91,6 @@ const AppProvider = ({children}) => {
     useEffect(() => {
         addUid(uid)
     }, [uid])
-
-    
-
-    // useEffect(() => {
-    //     addFaveToFirebase(uid)
-    // }, [state.favourites])
 
     return(
         <AppContext.Provider
@@ -117,6 +103,7 @@ const AppProvider = ({children}) => {
                 previousPage,
                 movieInfo,
                 addToFavourites,
+                removeFromFavourites,
                 loggedUser,
                 loggedEmail,
                 setDisplayUser,

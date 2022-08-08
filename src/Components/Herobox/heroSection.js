@@ -19,9 +19,9 @@ const HeroSection = ({movie, w, h}) => {
         const {Title,  Year, Poster, imdbID} = info;
     return (
         <section key={imdbID} className='section'>
-            <p><Link to="/selected" >
+            <div><Link to="/selected" >
             <Tilt> <img src={Poster} className="section-image" width={w ? w : '250px'} height={h ? h : '350px'} alt={Title} onClick={() => movieInfo(imdbID)}/> </Tilt>
-            </Link></p> 
+            </Link></div> 
             <div >
                 <h3>{Title} </h3>
                 <p>{Year}</p>

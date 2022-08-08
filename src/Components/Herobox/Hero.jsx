@@ -15,7 +15,7 @@ import HeroSwiper from './HeroSwiper';
 
 const Hero = () => {
     let navigate = useNavigate();
-    const {searchWord, showMovies} = useGlobalContext();
+    const {searchWord, showMovies, user} = useGlobalContext();
 
     const newMovies = ['tt5108870','tt11245972','tt4998632','tt12412888','tt11138512','tt1877830','tt2180339','tt2463208','tt15033192']
     const popular = ['tt8097030','tt13403046','tt6708668','tt13320622','tt1160419','tt9411972','tt14114802','tt6710474','tt8009428','tt1745960']
@@ -27,6 +27,13 @@ const Hero = () => {
         axios.get(url2).then((response) => showMovies(response.data))
     }, [url2, searchWord])
 
+    const handleSignButton = () => {
+        if(!user){
+            navigate('/create')
+        } else{
+            navigate('/')
+        }
+    }
 
     return(
         <div>
@@ -73,7 +80,7 @@ const Hero = () => {
                     <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim amet incidunt alias dolor provident quaerat accusamus nemo cum quis voluptate, hic fugiat unde, maiores voluptatem sunt aliquid! Blanditiis, culpa repudiandae!
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum, exercitationem excepturi quod praesentium eum aliquam. Ut quod quas, nesciunt nemo inventore consequuntur aut beatae quidem ex unde quis culpa delectus.
                     </p>
-                    <p><button className='hero-btn' onClick={() => navigate('/create')} >Sign Up</button></p>
+                    <p><button className='hero-btn' onClick={handleSignButton} >Sign Up</button></p>
                 </article>
             </section>
 
